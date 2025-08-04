@@ -2,9 +2,14 @@
 
 An interactive dashboard showcasing the latest benefits benchmarking data from the 2025 Sequoia report for SMB companies.
 
-## 🚀 Live Demo
+## 🌐 Live Website
 
-The dashboard is now live at: [https://therealjmum.github.io/benefitsbenchmarking/](https://therealjmum.github.io/benefitsbenchmarking/)
+**Main Website**: [https://therealjmum.github.io/benefitsbenchmarking/](https://therealjmum.github.io/benefitsbenchmarking/)
+
+### 📄 Website Pages
+- **Dashboard**: [https://therealjmum.github.io/benefitsbenchmarking/](https://therealjmum.github.io/benefitsbenchmarking/) - Interactive data visualization
+- **About**: [https://therealjmum.github.io/benefitsbenchmarking/about.html](https://therealjmum.github.io/benefitsbenchmarking/about.html) - Research methodology and team
+- **Contact**: [https://therealjmum.github.io/benefitsbenchmarking/contact.html](https://therealjmum.github.io/benefitsbenchmarking/contact.html) - Get in touch with us
 
 ## 📊 Features
 
@@ -66,8 +71,11 @@ The dashboard is now live at: [https://therealjmum.github.io/benefitsbenchmarkin
 
 ```
 benefitsbenchmarking/
-├── index.html              # Main dashboard file
-├── benefits_dashboard.html  # Original file
+├── index.html              # Main dashboard with navigation
+├── about.html              # About page with research details
+├── contact.html            # Contact page with form
+├── benefits_dashboard.html  # Original dashboard file
+├── _config.yml             # Jekyll configuration for GitHub Pages
 └── README.md              # This file
 ```
 

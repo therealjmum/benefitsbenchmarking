@@ -1,0 +1,59 @@
+# Jekyll configuration for GitHub Pages
+title: Benefits Benchmarking Dashboard
+description: Comprehensive analysis of employee benefits trends across SMB companies
+author: Benefits Benchmark Research Institute
+email: research@benefitsbenchmark.com
+
+# Site settings
+url: "https://therealjmum.github.io"
+baseurl: "/benefitsbenchmarking"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /:collection/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Benefits Benchmark Research Institute"
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+# Include files
+include:
+  - _pages
+  - _posts
+  - _drafts
+  - _layouts
+  - _includes
+  - _sass
+  - _config.yml
+  - index.html
+  - about.html
+  - contact.html
+  - benefits_dashboard.html
+  - README.md 
