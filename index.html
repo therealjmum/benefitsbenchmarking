@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 Benefits Benchmarking Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .dashboard {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-top: 20px;
+        }
+        
+        .benefits-list {
+            list-style: none;
+        }
+        
+        .benefits-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .benefits-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .percentage {
+            background: #667eea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .trend-up {
+            color: #28a745;
+        }
+        
+        .trend-down {
+            color: #dc3545;
+        }
+        
+        .refresh-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        
+        .refresh-btn:hover {
+            background: #5a6fd8;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📊 2025 Benefits Benchmarking Dashboard</h1>
+        <p>Interactive dashboard with the latest benefits benchmarking data from the 2025 Sequoia report for SMB companies</p>
+    </div>
+    
+    <div class="dashboard">
+        <!-- Survey Overview Card -->
+        <div class="card">
+            <h3>📈 Survey Overview</h3>
+            <div class="stats-grid">
+                <div class="stat">
+                    <span class="stat-number">1,479</span>
+                    <div class="stat-label">Companies Surveyed</div>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">54%</span>
+                    <div class="stat-label">Technology Sector</div>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">2025</span>
+                    <div class="stat-label">Report Year</div>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">SMB</span>
+                    <div class="stat-label">Focus Area</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Health Benefits Card -->
+        <div class="card">
+            <h3>🏥 Health Benefits</h3>
+            <ul class="benefits-list">
+                <li>
+                    <span>Medical Insurance</span>
+                    <span class="percentage">94%</span>
+                </li>
+                <li>
+                    <span>Dental Insurance</span>
+                    <span class="percentage">87%</span>
+                </li>
+                <li>
+                    <span>Vision Insurance</span>
+                    <span class="percentage">78%</span>
+                </li>
+                <li>
+                    <span>Mental Health Coverage</span>
+                    <span class="percentage">82%</span>
+                </li>
+                <li>
+                    <span>Health Savings Account (HSA)</span>
+                    <span class="percentage">65%</span>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Financial Benefits Card -->
+        <div class="card">
+            <h3>💰 Financial Benefits</h3>
+            <ul class="benefits-list">
+                <li>
+                    <span>401(k) Matching</span>
+                    <span class="percentage">89%</span>
+                </li>
+                <li>
+                    <span>Stock Options</span>
+                    <span class="percentage">76%</span>
+                </li>
+                <li>
+                    <span>Performance Bonuses</span>
+                    <span class="percentage">91%</span>
+                </li>
+                <li>
+                    <span>Student Loan Assistance</span>
+                    <span class="percentage">23%</span>
+                </li>
+                <li>
+                    <span>Financial Planning</span>
+                    <span class="percentage">34%</span>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Work-Life Balance Card -->
+        <div class="card">
+            <h3>⚖️ Work-Life Balance</h3>
+            <ul class="benefits-list">
+                <li>
+                    <span>Unlimited PTO</span>
+                    <span class="percentage">45%</span>
+                </li>
+                <li>
+                    <span>Remote Work Options</span>
+                    <span class="percentage">92%</span>
+                </li>
+                <li>
+                    <span>Flexible Hours</span>
+                    <span class="percentage">88%</span>
+                </li>
+                <li>
+                    <span>Parental Leave</span>
+                    <span class="percentage">67%</span>
+                </li>
+                <li>
+                    <span>Wellness Programs</span>
+                    <span class="percentage">73%</span>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Benefits Distribution Chart -->
+        <div class="card">
+            <h3>📊 Benefits Distribution</h3>
+            <div class="chart-container">
+                <canvas id="benefitsChart"></canvas>
+            </div>
+        </div>
+        
+        <!-- Trends Card -->
+        <div class="card">
+            <h3>📈 Year-over-Year Trends</h3>
+            <ul class="benefits-list">
+                <li>
+                    <span>Remote Work Adoption</span>
+                    <span class="trend-up">↗️ +15%</span>
+                </li>
+                <li>
+                    <span>Mental Health Benefits</span>
+                    <span class="trend-up">↗️ +12%</span>
+                </li>
+                <li>
+                    <span>Student Loan Assistance</span>
+                    <span class="trend-up">↗️ +8%</span>
+                </li>
+                <li>
+                    <span>Traditional PTO</span>
+                    <span class="trend-down">↘️ -5%</span>
+                </li>
+                <li>
+                    <span>On-site Perks</span>
+                    <span class="trend-down">↘️ -3%</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Data source: 2025 Sequoia Benefits Benchmarking Report - SMB Edition</p>
+        <p>Last updated: January 2025</p>
+    </div>
+
+    <script>
+        // Chart.js configuration
+        const ctx = document.getElementById('benefitsChart').getContext('2d');
+        
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Health Benefits', 'Financial Benefits', 'Work-Life Balance', 'Professional Development'],
+                datasets: [{
+                    data: [35, 28, 25, 12],
+                    backgroundColor: [
+                        '#667eea',
+                        '#764ba2',
+                        '#f093fb',
+                        '#f5576c'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            usePointStyle: true
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Add some interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate numbers on scroll
+            const stats = document.querySelectorAll('.stat-number');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+            
+            stats.forEach(stat => {
+                stat.style.opacity = '0';
+                stat.style.transform = 'translateY(20px)';
+                stat.style.transition = 'all 0.6s ease';
+                observer.observe(stat);
+            });
+        });
+    </script>
+</body>
+</html> 
