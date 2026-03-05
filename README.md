@@ -1,6 +1,6 @@
 # 2025 Benefits Benchmarking Dashboard
 
-An interactive dashboard showcasing the latest benefits benchmarking data from the 2025 Sequoia report for SMB companies.
+An interactive dashboard showcasing the latest benefits benchmarking data from the 2025 Sequoia report for SMB companies. JMUM's first Cursor experiment, excuse the UI.
 
 ## 🌐 Live Website
 
